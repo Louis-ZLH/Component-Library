@@ -1,0 +1,205 @@
+@import "@fontsource/inter";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+.merriweather-100 {
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.story-script-regular {
+  font-family: "Story Script", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.wdxl-lubrifont-sc-regular {
+  font-family: "WDXL Lubrifont SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tiktok-sans-100 {
+  font-family: "TikTok Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100;
+}
+
+.h-screen {
+  height: 100dvh;
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+.font-inter {
+  font-family: "Inter Variable", sans-serif;
+}
+
+.Poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.quicksand {
+  font-family: "Quicksand Variable", sans-serif;
+}
+
+.mulish {
+  font-family: "Mulish Variable", sans-serif;
+}
+
+h2 {
+  margin-bottom: 32px;
+}
+
+.scroller {
+  scrollbar-color: #cccccc transparent;
+}
+
+/* Dark mode */
+.dark .scroller {
+  scrollbar-color: #4a4a4a transparent;
+}
+
+pre[class*="language-"],
+code[class*="language-"] {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow-x: auto;
+}
+
+pre[class*="language-"] {
+  background-color: #f3f4f6 !important; /* 等于 bg-gray-100 */
+}
+
+.dark pre[class*="language-"] {
+  background-color: #171717 !important; /* dark:bg-neutral-900 */
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b6c6b !important;
+}
+
+/* Keywords (function, return, const, let...) */
+.token.keyword {
+  color: #c586c0 !important;
+}
+
+.token.plain-text {
+  color: #4a4a4a;
+}
+
+/* Strings */
+.token.string {
+  color: #ce9178 !important;
+}
+
+/* Numbers */
+.token.number {
+  color: #b5cea8 !important;
+}
+
+/* Function name */
+.token.function {
+  color: #dcdcaa !important;
+}
+
+/* Operators */
+.token.operator {
+  color: #d4d4d4 !important;
+}
+
+/* Attributes inside JSX */
+.token.attr-name {
+  color: #1fcb56 !important;
+}
+
+/* Attribute values */
+.token.attr-value {
+  color: #ce9178 !important;
+}
+
+/* Tags (<div> <span>) */
+.token.tag {
+  color: #569cd6 !important;
+}
+
+/* JSX builtin components (<Button>) — RED */
+.token.class-name {
+  color: #d16969 !important;
+}
+
+/* Punctuation like < > / = */
+.token.punctuation {
+  color: #d4d4d4 !important;
+}
+
+/* Boolean true/false */
+.token.boolean {
+  color: #569cd6 !important;
+}
+
+/* Light 模式（不需要改，用 prism.css 默认即可） */
+
+.dark .token.comment {
+  color: #727372 !important;
+}
+
+.dark .token.plain-text {
+  color: white;
+}
+
+.dark .token.keyword {
+  color: #c586c0 !important;
+}
+
+.dark .token.string {
+  color: #ce9178 !important;
+}
+
+.dark .token.tag {
+  color: #569cd6 !important;
+}
+
+.dark .token.class-name {
+  color: #73bbf2 !important;
+}
+
+.dark .token.attr-value {
+  color: #c8c04f !important;
+}
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.5rem !important;
+}
+
+pre.line-numbers .line-numbers-rows {
+  border-right: 0px;
+}
+
+pre.line-numbers .line-numbers-rows > span:before {
+  color: #555 !important;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "JetBrains Mono", monospace;
+}

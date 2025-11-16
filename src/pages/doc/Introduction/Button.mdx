@@ -1,0 +1,100 @@
+import { Strong, WithHighlightColor } from "../../../ui/styles/TextStyles.jsx";
+import { sectionOfPages } from "../../pageInfo.js";
+import DemoBlock from "../../../ui/layout/DemoBlock.jsx";
+import CopyButton from "../../../ui/base/Button/CopyButton.jsx";
+import {
+  glassButtonStyle,
+  glassContainerStyle,
+} from "../../../ui/styles/glass.js";
+import { Section } from "../../../ui/layout/Section.jsx";
+
+<Section id={0}>
+# Button Component
+<DemoBlock
+  title={"Glass Style Button"}
+  code={`<Button variant="glass">Click Me</Button>
+    //glass button
+  `}
+>
+
+    {
+        <div className="flex items-center justify-center">
+        <button className={glassButtonStyle + " px-4 py-2 rounded-2xl"}>
+            Click Me
+        </button>
+        </div>
+    }
+
+</DemoBlock>
+**The Button component is a versatile and customizable UI element designed to enhance user interactions within your application.**
+It supports multiple variants, sizes, and states, allowing developers to easily integrate it into various design contexts. Whether you need a primary action button, a secondary option, or a disabled state, this component provides the flexibility to meet your needs.
+With built-in accessibility features and responsive design, the Button component ensures a seamless user experience across different devices and screen sizes. Its intuitive API allows for quick customization of styles, icons, and behaviors, making it a reliable choice for any React-based project.
+</Section>
+
+<Section id={1}>
+  ## <WithHighlightColor>Props Explanation</WithHighlightColor>
+  The Button component accepts a variety of props to customize its appearance
+  and behavior: - `variant`: Defines the visual style of the button (e.g.,
+  "primary", "secondary", "glass"). - `size`: Specifies the size of the button
+  (e.g., "small", "medium", "large"). - `disabled`: A boolean that, when true,
+  disables the button and applies appropriate styles. - `onClick`: A function
+  that is called when the button is clicked. - `children`: The content to be
+  displayed inside the button, typically text or icons.
+</Section>
+
+<Section id={2}>
+  ## <WithHighlightColor>Usage Example</WithHighlightColor>
+  <Section.Subsection id={0}>
+    **The Button component is a versatile and customizable UI element designed
+    to enhance user interactions within your application.**
+    <DemoBlock
+      title={"Button Sizes"}
+      code={`<Button size="small">Small Button</Button>
+<Button size="medium">Medium Button</Button>
+<Button size="large">Large Button</Button>
+    `}
+    >
+      {
+        <div className="flex flex-col gap-4">
+          <button
+            className={glassButtonStyle + " rounded-2xl px-3 py-1 text-sm"}
+          >
+            Small Button
+          </button>
+          <button className={glassButtonStyle + " rounded-2xl px-4 py-2"}>
+            Medium Button
+          </button>
+          <button
+            className={glassButtonStyle + " rounded-2xl px-5 py-3 text-lg"}
+          >
+            Large Button
+          </button>
+        </div>
+      }
+    </DemoBlock>
+  </Section.Subsection>
+  <Section.Subsection id={1}>
+    ### default
+    <DemoBlock
+      title={"Default Button"}
+      code={`<Button>Default Button</Button>
+    `}
+    ></DemoBlock>
+  </Section.Subsection>
+  <Section.Subsection id={2}>
+    ### disabled
+    <DemoBlock
+      title={"Disabled Button"}
+      code={`<Button disabled>Disabled Button</Button>
+        `}
+    ></DemoBlock>
+  </Section.Subsection>
+  <Section.Subsection id={3}>
+    ### Loading
+    <DemoBlock
+      title={"Loading Button"}
+      code={`<Button isLoading>Loading Button</Button>
+            `}
+    ></DemoBlock>
+  </Section.Subsection>
+</Section>
