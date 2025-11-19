@@ -1,0 +1,146 @@
+import { Strong } from "../../ui/styles/TextStyles.jsx";
+import { Section } from "../../ui/layout/Section.jsx";
+import DemoBlock from "../../ui/layout/DemoBlock.jsx";
+
+<Section id={0}>
+# Compound Components
+
+## Definition
+
+**Compound Components** are a design pattern in React that allows multiple components to work together as a single unit. This pattern enables developers to create more flexible and reusable components by encapsulating related functionality and state management within a parent component.
+
+</Section>
+
+<Section id={1}>
+## When to Use?
+
+**Compound Components** are particularly useful in scenarios where you have a group of related components that need to share state or behavior. Common use cases include:
+
+- Form elements (e.g., input fields, labels, and buttons)
+- Tabs and tab panels
+- Accordions
+- Dropdown menus
+  By using Compound Components, you can create a more intuitive API for your components, making it easier for developers to use and understand them.
+
+</Section>
+
+<Section id={2}>
+## Implementation
+
+Implementing Compound Components typically involves creating a parent component that manages the shared state and behavior, along with child components that consume this state. Here's a basic example of how to implement Compound Components in React:
+
+<DemoBlock
+  code={`import React, { useState, createContext, useContext } from 'react';
+const TabsContext = createContext();
+
+const Tabs = ({ children }) => {
+    const [activeTab, setActiveTab] = useState(0);
+    return (
+        <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+        {children}
+        </TabsContext.Provider>); 
+};
+
+const TabList = ({ children }) => <div>{children}</div>;
+
+const Tab = ({ index, children }) => {
+    const { activeTab, setActiveTab } = useContext(TabsContext);
+    return (
+        <button
+        onClick={() => setActiveTab(index)}
+        style={{ fontWeight: activeTab === index ? 'bold' : 'normal' }} >
+        {children}
+        </button>
+    );
+};
+
+const TabPanel = ({ index, children }) => {
+    const { activeTab } = useContext(TabsContext);
+    return activeTab === index ? <div>{children}</div> : null;
+};
+
+Tabs.TabList = TabList;
+Tabs.Tab = Tab;
+Tabs.TabPanel = TabPanel;
+
+// Usage
+const App = () => {
+
+    return (<Tabs>
+        <Tabs.TabList>
+            <Tabs.Tab index={0}>Tab 1</Tabs.Tab>
+            <Tabs.Tab index={1}>Tab 2</Tabs.Tab>
+        </Tabs.TabList>
+        <Tabs.TabPanel index={0}>Content for Tab 1</Tabs.TabPanel>
+        <Tabs.TabPanel index={1}>Content for Tab 2</Tabs.TabPanel>
+    </Tabs>);
+};
+
+`}
+/>
+
+</Section>
+
+<Section id={3}>
+## Pros and Cons
+**Pros:**
+- **Encapsulation**: Compound Components encapsulate related functionality, making it easier to manage and maintain code.
+- **Reusability**: They promote reusability by allowing developers to create components that can be easily composed together.
+- **Clear API**: Compound Components provide a clear and intuitive API for developers to use.
+
+**Cons:**
+- **Complexity**: Implementing Compound Components can introduce additional complexity, especially for beginners.
+- **Performance**: Depending on the implementation, there may be performance considerations due to context usage.
+- **Debugging**: Debugging Compound Components can be more challenging due to the indirection introduced by context and nested components.
+</Section>
+
+
+<Section id={4}>
+## Example Use Cases
+Here are some common use cases for Compound Components:
+- **Form Elements**: Creating a form component that includes input fields, labels, and buttons that share validation logic and state.
+- **Tabs**: Implementing a tabbed interface where each tab and its corresponding panel are separate components that share the active tab state.
+- **Accordions**: Building an accordion component where each section can be expanded or collapsed, sharing the open/close state
+- **Dropdown Menus**: Creating a dropdown menu component where the menu items and the toggle button share the open/close state.
+
+<DemoBlock
+  code={`// Example: Dropdown Menu using Compound Components
+const Dropdown = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <DropdownContext.Provider value={{ isOpen, setIsOpen }}>
+        {children}
+        </DropdownContext.Provider>
+    );
+};
+const DropdownToggle = ({ children }) => {
+    const { isOpen, setIsOpen } = useContext(DropdownContext);
+    return (
+        <button onClick={() => setIsOpen(!isOpen)}>
+        {children}
+        </button>
+    );
+};
+const DropdownMenu = ({ children }) => {
+    const { isOpen } = useContext(DropdownContext);
+    return isOpen ? <div>{children}</div> : null;
+};
+
+Dropdown.Toggle = DropdownToggle;
+Dropdown.Menu = DropdownMenu;
+
+// Usage
+const App = () => {
+    return (<Dropdown>
+        <Dropdown.Toggle>Toggle Menu</Dropdown.Toggle>
+        <Dropdown.Menu>
+            <div>Item 1</div>
+            <div>Item 2</div>
+        </Dropdown.Menu>
+    </Dropdown>);
+};
+`}
+/>
+
+By leveraging Compound Components in these scenarios, developers can create more modular, maintainable, and reusable code that enhances the overall user experience.
+</Section>

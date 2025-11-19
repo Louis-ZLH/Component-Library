@@ -2,15 +2,17 @@ import { useLocation } from "react-router";
 import { useSetLocation } from "../../features/doc/useSetLocation";
 import IntroductionPage from "./Introduction.mdx";
 import ButtonPage from "./Button.mdx";
-import renderPropsPatternPage from "./RenderPropsPattern.mdx";
+import RenderPropsPatternPage from "./RenderPropsPattern.mdx";
 import HOCPage from "./Hoc.mdx";
+import ComPoundComponentPage from "./CompoundComponent.mdx";
 import { memo } from "react";
 
 const content = {
   introduction: IntroductionPage,
   button: ButtonPage,
-  renderPropsPattern: renderPropsPatternPage,
+  renderPropsPattern: RenderPropsPatternPage,
   hoc: HOCPage,
+  compoundComponent: ComPoundComponentPage,
 };
 
 function Index() {

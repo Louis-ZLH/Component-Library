@@ -47,10 +47,10 @@ export const sectionOfPages = {
     "Example Use Cases",
   ],
   compoundComponent: [
-    "What is Compound Component Pattern?",
-    "When to Use Compound Component Pattern?",
-    "Implementing Compound Component Pattern",
-    "Advantages and Disadvantages",
+    "Definition",
+    "When to Use?",
+    "Implementation",
+    "Pros and Cons",
     "Example Use Cases",
   ],
   errorBoundary: [
