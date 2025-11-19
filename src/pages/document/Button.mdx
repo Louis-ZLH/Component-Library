@@ -1,0 +1,354 @@
+import { Strong, WithHighlightColor } from "../../ui/styles/TextStyles.jsx";
+import { sectionOfPages } from "../pageInfo.js";
+import DemoBlock from "../../ui/layout/DemoBlock.jsx";
+import CopyButton from "../../ui/base/Button/CopyButton.jsx";
+import ChangeThemeButton from "../../ui/base/Button/ChangeThemeButton.jsx";
+import {
+  glassButtonStyle,
+  glassContainerStyle,
+} from "../../ui/styles/glass.js";
+import { Section } from "../../ui/layout/Section.jsx";
+import { Button, Spinner } from "component-lib-core";
+import { ArrowBigUp, ArrowRight, Send } from "lucide-react";
+import LinkButton from "../../ui/base/Button/LinkButton.jsx";
+
+<Section id={0}>
+# Button Component
+
+## Quick View
+
+<DemoBlock
+  code={`import { Button } from "component-lib-core";
+  import { ArrowBigUp } from "lucide-react";
+  
+  export default function ButtonDemo() {
+    return (
+      <div className="flex flex-wrap items-center gap-2">
+        <Button variant="outline">Button</Button>
+        <Button variant="outline" size="icon">
+          <ArrowBigUp size={20} strokeWidth={1.5} />
+        </Button>
+      </div>);
+    }
+  `}
+>
+  <div className="flex flex-wrap items-center gap-2">
+    <Button variant="outline">Button</Button>
+    <Button variant="outline" size="icon">
+      <ArrowBigUp size={20} strokeWidth={1.5} />
+    </Button>
+  </div>
+</DemoBlock>
+</Section>
+
+<Section id={1}>
+  ## Usage
+  <DemoBlock code={`import { Button } from "component-lib-core";`} />
+  <DemoBlock code={`<Button variant="outline">Button</Button>`} />
+</Section>
+
+<Section id={2}>
+  ## Props
+  <DemoBlock
+    code={`
+  interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: 'default' | 'outline' | 'text';
+    size?: 'default' | 'sm' | 'lg' | 'icon';
+    isLoading?: boolean;
+    loadingText?: string;
+    disabled?: boolean;
+  }
+  `}
+  />
+</Section>
+
+<Section id={3}>
+  ## Usage Examples
+  <Section.Subsection id={0} title={"size"}>
+    ### Size
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+import { ArrowBigUp } from "lucide-react";
+
+export default function ButtonSizeDemo() {
+    return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <Button size="sm" variant="outline">Small</Button>
+        <Button size="md" variant="outline">Default</Button>
+        <Button size="lg" variant="outline">Large</Button>
+      </div>
+      <div className="flex flex-wrap items-center justify-around gap-4">
+        <Button size="icon-sm" variant="outline">
+          <ArrowRight />
+        </Button>
+        <Button size="icon" variant="outline">
+          <ArrowRight />
+        </Button>
+        <Button size="icon-lg" variant="outline">
+          <ArrowRight />
+        </Button>
+      </div>
+    </div>);
+}
+      `}
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <Button size="sm" variant="outline">Small</Button>
+          <Button size="md" variant="outline">Default</Button>
+          <Button size="lg" variant="outline">Large</Button>
+        </div>
+        <div className="flex flex-wrap items-center justify-around gap-4">
+          <Button size="icon-sm" variant="outline">
+            <ArrowRight  />
+          </Button>
+          <Button size="icon" variant="outline">
+            <ArrowRight  />
+          </Button>
+          <Button size="icon-lg" variant="outline">
+            <ArrowRight  />
+          </Button>
+        </div>
+      </div>
+    </DemoBlock>
+
+  </Section.Subsection>
+  <Section.Subsection id={1}>
+    ### Default
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+
+export default function ButtonDefaultDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Button>Default</Button>
+      <Button variant="primary" size="md" disabled={false} isLoading={false}>
+        Primary
+      </Button>
+    </div>
+  );
+}
+
+`} >
+
+<div className="flex flex-wrap items-center gap-2">
+<Button>Default</Button>
+<Button
+        variant='primary' size="md" disabled={false} isLoading={false}>Primary</Button>
+</div>
+</DemoBlock>
+
+  </Section.Subsection>
+  <Section.Subsection id={2}>
+    ### Outline
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+
+export default function ButtonOutlineDemo() {
+    return <Button variant="outline">Outline</Button>;
+}
+`} >
+  <Button variant="outline">Outline</Button>
+</DemoBlock>
+
+</Section.Subsection>
+
+<Section.Subsection id={3}>
+    ### Ghost
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+  export default function ButtonGhostDemo() {
+    return (
+      <Button variant="ghost">Ghost</Button>
+    );
+  }
+      `}
+    >
+      <Button variant="ghost">Ghost</Button>
+    </DemoBlock>
+
+</Section.Subsection>
+
+<Section.Subsection id={4}>
+    ### Glass
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+  export default function ButtonGlassDemo() {
+    return <Button variant="glass">Glass</Button>;
+  }
+      `}
+    >
+      <Button variant="glass">Glass</Button>
+    </DemoBlock>
+
+</Section.Subsection>
+
+<Section.Subsection id={5}>
+    ### Link
+    <DemoBlock
+      code={`import { Button } from "component-lib-core";
+  export default function ButtonLinkDemo() {
+    return <Button variant="link">Link</Button>;
+    }
+      `}
+    >
+        <Button variant="link">Link</Button>
+    </DemoBlock>
+
+</Section.Subsection>
+
+<Section.Subsection id={6}>
+  ### Disabled
+  <DemoBlock
+    code={`import { Button } from "component-lib-core";
+  export default function ButtonDisabledDemo() {
+    return (
+        <Button variant="outline" disabled={true}>
+          disabled
+        </Button>
+      );
+    }
+      `}
+  >
+    <Button variant="outline" disabled={true}>
+      <>disabled</>
+    </Button>
+  </DemoBlock>
+</Section.Subsection>
+
+<Section.Subsection id={7}>
+  ### Loading
+  <DemoBlock
+    code={`import { Button } from "component-lib-core";
+  export default function ButtonLoadingDemo() {
+    return (
+        <Button variant="outline" isLoading={true}>
+          Loading
+        </Button>
+        );
+    }
+      `}
+  >
+    <Button variant="outline" isLoading={true}>
+      <>Loading</>
+    </Button>
+  </DemoBlock>
+</Section.Subsection>
+
+<Section.Subsection id={8}>
+  ### Icon
+  <DemoBlock
+    code={`import { Button } from "component-lib-core";
+  import { ArrowBigUp } from "lucide-react";
+  export default function ButtonIconDemo() {
+    return (
+        <Button variant="outline" size="icon">
+          <ArrowBigUp size={20} strokeWidth={1.5} />
+        </Button>
+        );
+    }
+      `}
+  >
+    <Button variant="outline" size="icon">
+      <ArrowBigUp size={20} strokeWidth={1.5} />
+    </Button>
+  </DemoBlock>
+</Section.Subsection>
+
+<Section.Subsection id={9}>
+  ### With Icon
+  <DemoBlock
+    code={`import { Button } from "component-lib-core";
+  import { ArrowRight } from "lucide-react";
+  export default function ButtonWithIconDemo() {
+    return (
+      <div className="flex flex-wrap items-center gap-2">
+        <Button variant="outline">
+          Next
+          <ArrowRight />
+        </Button>
+        <Button variant="primary">
+          <Send />
+          Send
+        </Button>
+      </div>
+        );
+    }
+      `}
+  >
+    <div className="flex flex-wrap items-center gap-2">
+      <Button variant="outline">
+        <>Next</> 
+        <ArrowRight />
+      </Button>
+      <Button variant="primary">
+        <Send />
+        <>Send</>
+      </Button>
+    </div>
+  </DemoBlock>
+</Section.Subsection>
+</Section>
+
+<Section id={4}>
+  ## Theming
+
+The theme of Button component now supports light mode and dark
+mode. To switch between light mode and dark mode, you need to add `dark`
+class to the container itself or to the `<html>` elements.
+
+`<html>` elements is recommended since it can cover the whole page.
+
+  <DemoBlock
+    code={`import { Button } from "component-lib-core";
+import ChangeThemeButton from "unknown";
+export default function ButtonThemeDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Button variant="glass">Theme</Button>
+      <ChangeThemeButton />
+    </div>
+  );
+}`
+    }
+  >
+  <div className="flex flex-wrap items-center gap-2">
+    <Button variant="glass">Theme</Button>
+    <Button variant="primary">Theme</Button>
+    <ChangeThemeButton />
+  </div>
+  </DemoBlock>
+</Section>
+
+<Section id={5}>
+  ## Customization
+  You can customize the Button component using your own styles. Here is an example of creating a glass-style button by applying custom styles.
+
+Below is a example of customizing the glass button elegantly with red tint and smooth transition effect:
+
+<DemoBlock
+  code={`
+import { Button } from "component-lib-core";
+export default function CustomButtonDemo() {
+  return (
+    <Button variant="glass" className={"bg-red-400/10 hover:bg-red-500/20 trainsition duration-500 dark:bg-[color-mix(in_srgb,#fca5a5_40%,#737373_70%)]/50 dark:hover:bg-[color-mix(in_srgb,#fca5a5_70%,#525252_30%)]/70"}>
+      Customized Button
+    </Button>
+  );
+}
+    `}
+>
+  <Button
+    variant="glass"
+    className={
+      "trainsition bg-red-400/10 duration-500 hover:bg-red-500/20 dark:bg-[color-mix(in_srgb,#fca5a5_40%,#737373_70%)]/50 dark:hover:bg-[color-mix(in_srgb,#fca5a5_70%,#525252_30%)]/70"
+    }
+  >
+    <>Customized Button</>
+  </Button>
+</DemoBlock>
+
+For further customization, please refer to the <LinkButton href="/docs/hoc"><Strong>Higher Order Component</Strong></LinkButton>.
+
+</Section>

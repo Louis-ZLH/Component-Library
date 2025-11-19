@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import Index from "./doc/Introduction/Index";
+import Index from "./document/Index";
 
 export const sectionOfPages = {
   introduction: [
@@ -11,14 +11,26 @@ export const sectionOfPages = {
     "AI-integration",
   ],
   button: [
-    "Button Component",
-    "Props Explanation",
+    "Quick View",
+    "Usage",
+    "Props Reference",
     {
       name: "Usage Examples",
-      subsections: ["size", "default", "disabled", "loading", "link"],
+      subsections: [
+        "Size",
+        "Default",
+        "Outline",
+        "Ghost",
+        "Glass",
+        "Link",
+        "Disabled",
+        "Loading",
+        "Icon",
+        "With Icon",
+      ],
     },
     "Theming",
-    "Accessibility",
+    "Customization",
   ],
 };
 

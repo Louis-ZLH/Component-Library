@@ -91,6 +91,14 @@ pre[class*="language-"] {
   background-color: #171717 !important; /* dark:bg-neutral-900 */
 }
 
+code[class*="language-"] {
+  color: #000 !important;
+}
+
+.dark code[class*="language-"] {
+  color: #d3d3d3 !important;
+}
+
 /* Comments */
 .token.comment,
 .token.prolog,
@@ -101,7 +109,7 @@ pre[class*="language-"] {
 
 /* Keywords (function, return, const, let...) */
 .token.keyword {
-  color: #c586c0 !important;
+  color: #fc5858 !important;
 }
 
 .token.plain-text {
@@ -115,12 +123,12 @@ pre[class*="language-"] {
 
 /* Numbers */
 .token.number {
-  color: #b5cea8 !important;
+  color: #e18cf2 !important;
 }
 
 /* Function name */
 .token.function {
-  color: #dcdcaa !important;
+  color: #b83091 !important;
 }
 
 /* Operators */
@@ -150,7 +158,7 @@ pre[class*="language-"] {
 
 /* Punctuation like < > / = */
 .token.punctuation {
-  color: #d4d4d4 !important;
+  color: #5d5d5d !important;
 }
 
 /* Boolean true/false */
@@ -165,11 +173,11 @@ pre[class*="language-"] {
 }
 
 .dark .token.plain-text {
-  color: white;
+  color: rgb(216, 216, 216);
 }
 
 .dark .token.keyword {
-  color: #c586c0 !important;
+  color: #f86f6f !important;
 }
 
 .dark .token.string {
@@ -186,6 +194,10 @@ pre[class*="language-"] {
 
 .dark .token.attr-value {
   color: #c8c04f !important;
+}
+
+.dark .token.function {
+  color: #57cf5f !important;
 }
 
 pre.line-numbers {

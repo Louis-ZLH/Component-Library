@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo } from "react";
-import { locationContext, sectionContext } from "../../pages/doc/Docs";
+import { locationContext, sectionContext } from "../../pages/Docs";
 import { sectionOfPages } from "../../pages/pageInfo";
 
 export function useObserver() {
@@ -19,7 +19,7 @@ export function useObserver() {
       {
         root: null,
         // scrollMargin: "-45% 0px -45% 0px",
-        rootMargin: "-49% 0px -50% 0px",
+        rootMargin: "-30% 0px -69% 0px",
         threshold: 0,
       },
     );

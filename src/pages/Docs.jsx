@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import LeftSidebar from "../../ui/layout/LeftSidebar";
-import RightSideBar from "../../ui/layout/RightSideBar";
+import LeftSidebar from "../ui/layout/LeftSidebar";
+import RightSideBar from "../ui/layout/RightSideBar";
 import { createContext, useState } from "react";
 import { useMemo } from "react";
 

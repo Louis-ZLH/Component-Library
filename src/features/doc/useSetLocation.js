@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { locationContext } from "../../pages/doc/Docs";
+import { locationContext } from "../../pages/Docs";
 
 export function useSetLocation(location) {
   const { setLocation } = useContext(locationContext);

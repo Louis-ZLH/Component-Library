@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { AppLayout } from "./ui/layout/AppLayout";
-import Docs from "./pages/doc/Docs";
+import Docs from "./pages/Docs";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./ui/layout/ErrorFallback";
 import { docRoutes } from "./pages/pageInfo";

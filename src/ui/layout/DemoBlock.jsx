@@ -31,10 +31,10 @@ export default function DemoBlock({ title, children, code }) {
           {children && (
             <div
               className={
-                "bg-white p-6 transition-colors duration-600 dark:bg-black"
+                "flex min-h-50 items-center justify-center bg-white p-6 transition-colors duration-600 dark:bg-black"
               }
             >
-              <div>{children}</div>
+              {children}
             </div>
           )}
           {code && (

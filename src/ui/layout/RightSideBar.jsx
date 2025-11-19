@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { sectionContext } from "../../pages/doc/Docs";
+import { sectionContext } from "../../pages/Docs";
 import { useObserver } from "../../features/doc/useObserver";
 
 export default function RightSideBar() {
