@@ -32,6 +32,34 @@ export const sectionOfPages = {
     "Theming",
     "Customization",
   ],
+  renderPropsPattern: [
+    "Definition",
+    "When to Use?",
+    "Implementation",
+    "Pros and Cons",
+    "Example Use Cases",
+  ],
+  hoc: [
+    "What is Higher-Order Component (HOC)?",
+    "When to Use HOC?",
+    "Implementing HOC",
+    "Advantages and Disadvantages",
+    "Example Use Cases",
+  ],
+  compoundComponent: [
+    "What is Compound Component Pattern?",
+    "When to Use Compound Component Pattern?",
+    "Implementing Compound Component Pattern",
+    "Advantages and Disadvantages",
+    "Example Use Cases",
+  ],
+  errorBoundary: [
+    "What is Error Boundary?",
+    "When to Use Error Boundary?",
+    "Implementing Error Boundary",
+    "Advantages and Disadvantages",
+    "Example Use Cases",
+  ],
 };
 
 export const pageList = [
@@ -58,7 +86,7 @@ export const pageList = [
   { name: "React Patterns", type: "title" },
   {
     name: "render props pattern",
-    href: "renderProps",
+    href: "renderPropsPattern",
     type: "link",
   },
   {

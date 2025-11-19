@@ -1,0 +1,105 @@
+import { Strong } from "../../ui/styles/TextStyles.jsx";
+import { Section } from "../../ui/layout/Section.jsx";
+import DemoBlock from "../../ui/layout/DemoBlock.jsx";
+
+<Section id={0}>
+# Render Props Pattern
+
+## What is Render Props Pattern?
+
+Render props is a simple idea: a parent component passes a function (usually called `render` or `children`) to its child, and that function returns the actual UI. The parent focuses on managing logic or state, while the render function decides how to draw the result on screen.
+
+</Section>
+
+<Section id={1}>
+## When to Use Render Props Pattern?
+
+- **Share a slice of state**: Keep the logic for fetching data, toggling, or tracking in one place and let consumers determine presentation.
+- **Provide optional layouts**: Design system primitives can stay unopinionated by delegating their final markup to a render function.
+- **Compose behaviors**: Instead of prop drilling helpers through many layers, expose them once through a render prop and let deeper components consume them directly.
+
+In short, render props are great whenever you want to separate logic from presentation while keeping components reusable and flexible.
+
+</Section>
+
+<Section id={2}>
+## Implementing Render Props Pattern
+The implementation is literally "pass me a function and I'll call it with what I know". Here's the tiniest version: one component owns the data, the other decides how to render it.
+
+<DemoBlock
+  code={`import React from "react";
+
+function MessageProvider({ render }) {
+const message = "Hello from render props";
+return render(message);
+}
+
+export default function RenderPropsExample() {
+  return (
+    <MessageProvider render={(text) => <p>{text}</p>} />
+  );
+}
+  `}
+/>
+
+`MessageProvider` stays responsible for the information and never touches layout. The consumer sends a function that turns the value into whatever markup it wants — a `<p>`, a badge, a tooltip, etc. That's all the render props pattern needs.
+
+</Section>
+
+<Section id={3}>
+## Advantages and Disadvantages
+
+### Advantages
+
+- **Flexibility**: Consumers have full control over rendering, enabling diverse UIs from the same logic.
+- **Separation of Concerns**: Logic and presentation are cleanly separated, making components easier to maintain.
+- **Reusability**: The same render prop component can be reused with different UIs across an application.
+
+### Disadvantages
+
+- **Verbose Syntax**: The nested function syntax can lead to less readable code, especially with complex UIs.
+- **Performance Considerations**: Each render prop function creates a new closure, which may lead to unnecessary re-renders if not handled carefully.
+- **Tooling Limitations**: Some IDEs and type checkers may struggle with the dynamic nature of render props, making it harder to get accurate type hints or refactoring support.
+
+</Section>
+
+<Section id={4}>
+## Example Use Case
+
+Render props shine when you want one component to provide data while letting another decide how it should look. A list renderer is an everyday use case: the container loops through items, but the render function decides what each entry should look like.
+
+<DemoBlock
+  code={`import React from "react";
+
+function List({ items, render }) {
+return (
+
+<ul>
+  {items.map((item) => (
+    <li key={item.id}>{render(item)}</li>
+  ))}
+</ul>
+); }
+
+export default function RenderPropsUseCase() {
+  const teammates = [
+    { id: 1, name: "Ava", online: true },
+    { id: 2, name: "Noah", online: false },
+    { id: 3, name: "Liu", online: true }
+  ];
+
+return (
+
+<List
+  items={teammates}
+  render={(person) => (
+    <span>
+      {person.name} {person.online ? "🟢" : "⚪️"}
+    </span>
+  )}
+/>
+); } `} />
+
+`List` is reusable because it never assumes how each item should look; it just forwards the item to the render function. Swap the render function and the same data can become avatars, badges, or simple text rows without touching the list logic.
+
+</Section>

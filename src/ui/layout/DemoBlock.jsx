@@ -1,6 +1,6 @@
 import Prism from "prismjs";
 import "prismjs/components/prism-jsx";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import CopyButton from "../base/Button/CopyButton";
 
 export default function DemoBlock({ title, children, code }) {
@@ -15,7 +15,7 @@ export default function DemoBlock({ title, children, code }) {
       ref.current = setTimeout(() => setIsCopied(false), 2000);
     });
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
     Prism.highlightAll();
     return () => {
       if (ref.current) {
