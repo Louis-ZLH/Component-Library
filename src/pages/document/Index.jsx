@@ -5,6 +5,7 @@ import ButtonPage from "./Button.mdx";
 import RenderPropsPatternPage from "./RenderPropsPattern.mdx";
 import HOCPage from "./Hoc.mdx";
 import ComPoundComponentPage from "./CompoundComponent.mdx";
+import ErrorBoundaryPage from "./ErrorBoundary.mdx";
 import { memo } from "react";
 
 const content = {
@@ -13,6 +14,7 @@ const content = {
   renderPropsPattern: RenderPropsPatternPage,
   hoc: HOCPage,
   compoundComponent: ComPoundComponentPage,
+  errorBoundary: ErrorBoundaryPage,
 };
 
 function Index() {

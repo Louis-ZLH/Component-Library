@@ -1,0 +1,106 @@
+import { Strong } from "../../ui/styles/TextStyles.jsx";
+import { Section } from "../../ui/layout/Section.jsx";
+import DemoBlock from "../../ui/layout/DemoBlock.jsx";
+
+<Section id={0}>
+# Error Boundary
+
+## What is Error Boundary?
+<Strong>An Error Boundary is a React component that catches JavaScript errors anywhere in its child component tree, logs those errors, and displays a fallback UI instead of the component tree that crashed.</Strong> Error Boundaries help to prevent the entire application from crashing due to unhandled errors in specific components.
+</Section>
+
+<Section id={1}>
+## When to Use Error Boundary?
+Error Boundaries are useful in scenarios where you want to isolate errors in specific parts of your application, such as:
+- Wrapping third-party components that may throw errors.
+- Protecting critical UI sections where errors should not affect the entire app.
+- Catching errors in components that are prone to failure, such as network requests or dynamic imports.
+
+In industry, Error Boundaries are extremely important for maintaining a robust user experience, as they allow applications to gracefully handle errors without crashing completely.
+
+</Section>
+
+<Section id={2}>
+## Implementation
+To create an Error Boundary, you need to define a class component that implements the `componentDidCatch` lifecycle method and the `getDerivedStateFromError` static method. Here's a basic example:
+
+<DemoBlock code={`import React, { Component } from 'react';
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.error("Error caught by Error Boundary:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+export default ErrorBoundary;
+`} />
+
+In reality, implementing Error Boundaries can be simplified using libraries like `react-error-boundary`, which provides a more convenient API for handling errors in React components.
+
+<DemoBlock code={`import { ErrorBoundary } from 'react-error-boundary';
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  );
+}
+function MyComponent() {
+  return (
+    <ErrorBoundary
+      FallbackComponent={ErrorFallback}
+      onReset={() => {
+        // Reset the state of your app so the error doesn't happen again
+      }}
+    >
+      <MyWidget />
+    </ErrorBoundary>
+  );
+}
+`}
+/>
+</Section>
+
+<Section id={3}>
+## Pros and Cons
+**Pros:**
+- **Improved User Experience**: Prevents the entire app from crashing, allowing users to continue using other parts of the application.
+- **Error Isolation**: Errors are contained within specific components, making it easier to identify and fix issues.
+- **Custom Fallback UI**: Developers can provide a user-friendly fallback UI when errors occur.
+
+**Cons:**
+- **Limited Scope**: Error Boundaries only catch errors in the components below them in the tree. They do not catch errors in event handlers, asynchronous code, or server-side rendering.
+- **Class Component Requirement**: Traditional Error Boundaries must be class components, which may not align with the functional component paradigm preferred in modern React development. However, libraries like `react-error-boundary` help mitigate this issue.
+- **Performance Overhead**: There may be a slight performance overhead due to the additional error handling logic.
+
+Generally, Error Boundaries are still a crucial tool for building resilient React applications, but they should be used judiciously to avoid overcomplicating the component hierarchy.
+
+</Section>
+
+<Section id={4}>
+## Example Use Cases
+Here are some common use cases for Error Boundaries:
+- **Third-Party Components**: Wrapping third-party UI components that may not be reliable.
+- **Critical UI Sections**: Protecting essential parts of the application, such as navigation menus or forms.
+- **Dynamic Imports**: Handling errors in components that are loaded asynchronously.
+</Section>
