@@ -1,0 +1,115 @@
+import { Strong } from "../../ui/styles/TextStyles.jsx";
+import { Section } from "../../ui/layout/Section.jsx";
+import DemoBlock from "../../ui/layout/DemoBlock.jsx";
+
+<Section id={0}>
+# Higher-Order Components (HOC)
+
+## What is a Higher-Order Component?
+
+A Higher-Order Component (HOC) is a function that takes a component and returns a new component with enhanced capabilities. HOCs are used to share common functionality between components without repeating code, promoting reusability and separation of concerns.
+
+</Section>
+
+<Section id={1}>
+## When to Use HOC?
+
+- **Code Reusability**: When multiple components need to share the same logic or behavior
+- **Cross-Cutting Concerns**: For functionalities like logging, error handling, or theming that span across various components
+- **Conditional Rendering**: To modify the rendering behavior of components based on certain conditions
+
+In summary, HOCs are useful whenever you want to enhance components with additional functionality while keeping the original component's code clean and focused on its primary purpose.
+
+</Section>
+<Section id={2}>
+## Implementing HOC
+
+Here's a simple example of a HOC that adds loading functionality to a component:
+
+<DemoBlock
+  code={`import React, { useState, useEffect } from "react";
+function withLoading(Component) {
+    return function WithLoadingComponent({ isLoading, ...props }) {
+        if (isLoading) {
+            return <div>Loading...</div>;
+        }
+        return <Component {...props} />;
+    };
+}
+
+function DataDisplay({ data }) { return <div>Data: {data}</div>; }
+
+const DataDisplayWithLoading = withLoading(DataDisplay);
+
+export default function HOCExample() {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setData("Here is some data!");
+            setLoading(false);
+        }, 2000);
+    }, []);
+    return <DataDisplayWithLoading isLoading={loading} data={data} />;
+}`}
+/>
+In this example, `withLoading` is a HOC that takes a component (`DataDisplay`) and returns a new component (`WithLoadingComponent`). The new component checks the `isLoading` prop and either displays a loading message or renders the original component with its props.
+</Section> 
+<Section id={3}>
+## Advantages and Disadvantages
+### Advantages
+- **Code Reusability**: HOCs allow you to reuse logic across multiple components without duplication.
+- **Separation of Concerns**: They help separate the logic from the UI, making components cleaner and easier to maintain.
+- **Enhanced Functionality**: HOCs can add new features to existing components without modifying their code.   
+### Disadvantages
+- **Wrapper Hell**: Excessive use of HOCs can lead to deeply nested component trees, making debugging and understanding the component hierarchy difficult.
+- **Props Collision**: HOCs may inadvertently override or conflict with existing props of the wrapped component.
+- **Static Methods Loss**: HOCs do not automatically copy static methods from the wrapped component, which can lead to loss of functionality.
+</Section>
+<Section id={4}>
+## Example Use Cases
+- **Authentication**: A HOC can check if a user is authenticated before rendering a component.
+
+<DemoBlock
+  code={`import React from "react";
+function withAuthentication(Component) {
+    return function AuthenticatedComponent(props) {
+        const isAuthenticated = // logic to check authentication
+        if (!isAuthenticated) {
+            return <div>Please log in to access this content.</div>;
+        }
+        return <Component {...props} />;
+    };
+}`}
+/>
+
+- **Theming**: A HOC can provide theme-related props to components, allowing for consistent styling across an application.
+
+<DemoBlock
+  code={`import React from "react";
+function withTheme(Component) {
+    return function ThemedComponent(props) {
+        const theme = // logic to get current theme
+        return <Component {...props} theme={theme} />;
+    };
+}`}
+/>
+
+- **Data Fetching**: A HOC can handle data fetching and pass the fetched data as props to the wrapped component.
+
+<DemoBlock
+  code={`import React, { useState, useEffect } from "react";
+function withDataFetching(Component, url) {
+    return function DataFetchingComponent(props) {
+        const [data, setData] = useState(null);
+        useEffect(() => {
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => setData(data));
+        }, [url]);
+        return <Component {...props} data={data} />;
+    };
+}`}
+/>
+
+</Section>

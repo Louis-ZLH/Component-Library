@@ -40,7 +40,7 @@ export const sectionOfPages = {
     "Example Use Cases",
   ],
   hoc: [
-    "What is Higher-Order Component (HOC)?",
+    "Definition of HOC",
     "When to Use HOC?",
     "Implementing HOC",
     "Advantages and Disadvantages",

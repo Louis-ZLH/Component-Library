@@ -107,6 +107,14 @@ code[class*="language-"] {
   color: #6b6c6b !important;
 }
 
+.token.operator {
+  color: #000000;
+}
+
+.dark .token.operator {
+  color: #d4d4d4;
+}
+
 /* Keywords (function, return, const, let...) */
 .token.keyword {
   color: #fc5858 !important;
@@ -129,11 +137,6 @@ code[class*="language-"] {
 /* Function name */
 .token.function {
   color: #b83091 !important;
-}
-
-/* Operators */
-.token.operator {
-  color: #d4d4d4 !important;
 }
 
 /* Attributes inside JSX */
@@ -159,6 +162,10 @@ code[class*="language-"] {
 /* Punctuation like < > / = */
 .token.punctuation {
   color: #5d5d5d !important;
+}
+
+.dark .token.punctuation {
+  color: #d4d4d4 !important;
 }
 
 /* Boolean true/false */
